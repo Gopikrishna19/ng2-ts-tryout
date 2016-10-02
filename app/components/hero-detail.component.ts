@@ -1,4 +1,4 @@
-import {IHero} from './types/IHero';
+import {IHero} from '../types/IHero';
 import {Component, Input} from '@angular/core';
 
 @Component({
