@@ -10,6 +10,15 @@ export class HeroService {
 
   constructor(private http: Http) {}
 
+  public create(name: string): Promise<IHero> {
+    return this.http.post(this.url, JSON.stringify({name}), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => response.json().data as IHero,
+        this.handleError
+      );
+  }
+
   public getHeroes(): Promise<IHero[]> {
     return this.http.get(this.url)
       .toPromise()

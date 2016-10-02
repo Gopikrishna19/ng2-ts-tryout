@@ -23,17 +23,31 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  private getHeroes(): void {
-    this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes);
+  public add(name: string): void {
+    name = name.trim();
+
+    if (!name) {
+      return;
+    }
+
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
   }
 
-  private onSelect(hero: IHero): void {
+  public onSelect(hero: IHero): void {
     this.selectedHero = hero;
   }
 
-  private gotoDetail(): void {
+  public gotoDetail(): void {
     let link = ['/detail', this.selectedHero.id];
     this.router.navigate(link);
+  }
+
+  private getHeroes(): void {
+    this.heroService.getHeroes()
+      .then(heroes => this.heroes = heroes);
   }
 }
