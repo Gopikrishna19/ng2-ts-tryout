@@ -20,7 +20,7 @@ export class HeroDetailComponent implements OnInit {
     private location: Location
   ) {}
 
-  private ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.heroService.getHero(id)

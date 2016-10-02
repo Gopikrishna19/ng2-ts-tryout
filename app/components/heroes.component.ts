@@ -19,7 +19,7 @@ export class HeroesComponent implements OnInit {
     private router: Router
   ) {}
 
-  private ngOnInit(): void {
+  public ngOnInit(): void {
     this.getHeroes();
   }
 
