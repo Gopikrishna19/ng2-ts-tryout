@@ -19,6 +19,17 @@ export class HeroService {
       );
   }
 
+  public delete(id: number) {
+    const url = `${this.url}/${id}`;
+
+    return this.http.delete(url)
+      .toPromise()
+      .then(
+        () => null,
+        this.handleError
+      );
+  }
+
   public getHeroes(): Promise<IHero[]> {
     return this.http.get(this.url)
       .toPromise()
