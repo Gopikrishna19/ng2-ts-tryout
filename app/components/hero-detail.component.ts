@@ -7,6 +7,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'my-hero-detail',
+  styleUrls: ['hero-detail.component.css'],
   templateUrl: 'hero-detail.component.html'
 })
 export class HeroDetailComponent implements OnInit {
