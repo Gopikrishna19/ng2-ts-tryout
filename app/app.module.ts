@@ -1,4 +1,5 @@
 import {AppComponent} from './app.component';
+import {DashboardComponent} from './components/dashboard.component';
 import {HeroDetailComponent} from './components/hero-detail.component';
 import {HeroesComponent} from './components/heroes.component';
 import {HeroService} from './services/hero.service';
@@ -10,6 +11,7 @@ import {BrowserModule} from '@angular/platform-browser';
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    DashboardComponent,
     HeroesComponent,
     HeroDetailComponent
   ],
