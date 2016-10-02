@@ -1,10 +1,11 @@
 import {IHero} from '../types/IHero';
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HeroService {
+  private headers = new Headers({'Content-Type': 'application/json'});
   private url = '/app/heroes';
 
   constructor(private http: Http) {}
@@ -25,6 +26,17 @@ export class HeroService {
       .toPromise()
       .then(
         response => response.json().data as IHero[],
+        this.handleError
+      );
+  }
+
+  public update(hero: IHero): Promise<IHero> {
+    const url = `${this.url}/${hero.id}`;
+
+    return this.http.put(url, JSON.stringify(hero), {headers: this.headers})
+      .toPromise()
+      .then(
+        () => hero,
         this.handleError
       );
   }
