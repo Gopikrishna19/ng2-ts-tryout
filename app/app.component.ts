@@ -1,6 +1,6 @@
-import {HEROES} from './data/heroes';
+import {HeroService} from './hero.service';
 import {IHero} from './types/IHero';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -67,10 +67,22 @@ import {Component} from '@angular/core';
 <my-hero-detail [hero]="selectedHero"></my-hero-detail>
 `
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   private selectedHero: IHero;
-  private heroes = HEROES;
+  private heroes: IHero[];
+
+  constructor(private heroService: HeroService) {
+
+  }
+
+  private ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  private getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
 
   private onSelect(hero: IHero): void {
     this.selectedHero = hero;
